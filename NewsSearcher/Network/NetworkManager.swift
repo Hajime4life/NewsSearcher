@@ -62,8 +62,6 @@ final class NetworkManager {
                 return
             }
             
-            print("\(res)")
-            
             if let response = try? JSONDecoder().decode(NewsResponseModel.self, from: data) {
                 completion(.success(response.news))
             } else {

@@ -1,8 +1,8 @@
 import SwiftUI
 
-// TODO: Добавить Алерты ошибок
 // TODO: Добавить чипсы категорий
-// TODO: Использовать Source
+// TODO: Добавить настройки
+// TODO: Локализовать всё под разные языки
 
 struct NewsView: View {
     @State private var alertViewModel = AlertViewModel()
@@ -37,10 +37,16 @@ struct NewsView: View {
                                 .padding(.top, 5)
 
                             if let author = newsItem.author {
-                                Text(NSLocalizedString("Author: \(author)", comment: "Author label")) // TODO: Локализовать
+                                Text(NSLocalizedString("Автор: \(author)", comment: "Author label")) // TODO: Локализовать
                                     .font(.system(size: 12))
                                     .foregroundStyle(.gray)
                                     .padding(.top, 5)
+                            }
+                            if let source = newsItem.source?.name {
+                                Text("@\(source)")
+                                    .font(.system(size: 10))
+                                    .foregroundStyle(.gray)
+                                    .opacity(0.8)
                             }
 
                             if let date = newsItem.publishedAt?.toHumanReadableDate() {
@@ -56,10 +62,10 @@ struct NewsView: View {
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Menu {
-                        Button(NSLocalizedString("English", comment: "Language option")) { // TODO: Локализовать
+                        Button(NSLocalizedString("Английский", comment: "Language option")) { // TODO: Локализовать
                             viewModel.switchLanguage(.en)
                         }
-                        Button(NSLocalizedString("Russian", comment: "Language option")) { // TODO: Локализовать
+                        Button(NSLocalizedString("Русский", comment: "Language option")) { // TODO: Локализовать
                             viewModel.switchLanguage(.ru)
                         }
                     } label: {
@@ -68,7 +74,7 @@ struct NewsView: View {
                 }
             }
             .searchable(text: $viewModel.searchText)
-            .navigationTitle(NSLocalizedString("News", comment: "Navigation title")) // TODO: Локализовать
+            .navigationTitle(NSLocalizedString("Новости", comment: "Navigation title")) // TODO: Локализовать
             .refreshable {
                 viewModel.fetchNews()
             }

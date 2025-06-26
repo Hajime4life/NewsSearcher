@@ -31,6 +31,12 @@ struct DetailView: View {
                         .font(.subheadline)
                         .foregroundStyle(.gray)
                 }
+                if let source = viewModel.news.source?.name {
+                    Text("@\(source)")
+                        .font(.subheadline)
+                        .foregroundStyle(.gray)
+                }
+
                 
                 if let publishedDate = viewModel.news.publishedAt?.toHumanReadableDate() {
                     Text("Опубликовано: \(publishedDate)")

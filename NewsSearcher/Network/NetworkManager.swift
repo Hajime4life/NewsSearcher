@@ -66,9 +66,9 @@ final class NetworkManager {
                 return
             }
             
-            if let jsonString = String(data: data, encoding: .utf8) {
-                print("⚠️ Ответ: \(jsonString)")
-            }
+//            if let jsonString = String(data: data, encoding: .utf8) {
+//                print("⚠️ Ответ: \(jsonString)")
+//            }
             
             do {
                 let decoder = JSONDecoder()

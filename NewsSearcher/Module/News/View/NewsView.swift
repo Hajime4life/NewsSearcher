@@ -1,6 +1,5 @@
 import SwiftUI
 
-// TODO: Добавить чипсы категорий
 // TODO: Добавить настройки
 // TODO: Локализовать всё под разные языки
 
@@ -17,6 +16,23 @@ struct NewsView: View {
     var body: some View {
         NavigationStack {
             List {
+                Section {
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack(spacing: 5) {
+                            ForEach(searchButtonType.allCases, id: \.self) { type in
+                                Button(action: {
+                                    viewModel.searchByButton(type: type)
+                                }) {
+                                    Text(type.buttonName)
+                                        .padding(.vertical, 5)
+                                }
+                                .buttonStyle(.bordered)
+                            }
+                        }
+                    }
+                }
+                
+
                 ForEach(viewModel.news, id: \.self) { newsItem in
                     NavigationLink(destination: DetailView(news: newsItem)) {
                         VStack(alignment: .leading) {
@@ -90,8 +106,6 @@ struct NewsView: View {
             }
         }
     }
-    
-    
 }
 
 #Preview {

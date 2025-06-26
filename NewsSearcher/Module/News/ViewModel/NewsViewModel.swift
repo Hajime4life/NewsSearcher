@@ -9,9 +9,10 @@ final class NewsViewModel {
             localStorage.set(searchLanguage.rawValue, forKey: storageKeys.selectedLanguage.rawValue)
         }
     }
-    private(set) var news: [NewsModel] = []
+
 
     // MARK: - Private Props
+    private(set) var news: [NewsModel] = []
     private let networkManager: NetworkManager
     private let localStorage: LocalStorage
     private let alertViewModel: AlertViewModel
@@ -48,6 +49,11 @@ final class NewsViewModel {
                 self.alertViewModel.showAlert(message: error.localizedDescription) // TODO: Локализовать
             }
         }
+    }
+    
+    func searchByButton(type: searchButtonType) {
+        self.searchText = type.rawValue
+        self.fetchNews()
     }
 
     func switchLanguage(_ newLanguage: Constants.language) {

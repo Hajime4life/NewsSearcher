@@ -7,5 +7,9 @@ enum Constants {
         case ru = "ru"
     }
     
-//    static let queryPageSize: Int32 = 20
+    static let queryPageSize: Int32 = 20
+    
+    enum sortType: String {
+        case new = "PublishedAt"
+    }
 }

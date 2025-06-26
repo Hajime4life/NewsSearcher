@@ -13,7 +13,7 @@ struct PlaceholderImageView {
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 30)
                         .overlay{
-                            RoundedRectangle(cornerRadius: 5)
+                            RoundedRectangle(cornerRadius: 15)
                                 .frame(width: 50, height: 2)
                                 .rotationEffect(Angle(degrees: -50))
                                 .opacity(0.8)
